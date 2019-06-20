@@ -1,7 +1,7 @@
 # Wazoku Integrations test
 
 ## Description
-This repo tests SSO with Google accouns and interactions with its profile api.
+This repo is intended for testing Single Sign On with Google accounts and interactions with its API.
 
 ## Getting started
 
