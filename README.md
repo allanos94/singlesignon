@@ -11,17 +11,17 @@ Due to the public nature of forks we suggest you duplicate the repo rather then 
 You will need to create your own repo e.g. `[your_github_username]/singlesignon` and then clone
 this repo `eshwaric/singlesignon` and push the code into your new one. You can follow the steps for doing this here: https://help.github.com/articles/duplicating-a-repository/
 
-Before proceeded be aware that this exercise assumes you are using a linux machine with [pip](https://pip.pypa.io/en/stable) and [virtualenv](https://virtualenv.pypa.io/en/stable/) installed.
+Before proceeded be aware that this exercise assumes you are using a linux machine with [pip](https://pip.pypa.io/en/stable) and [venv](https://docs.python.org/3/library/venv.html) installed.
 
 Create a new virtualenv in your checked out repo.
 
     cd /[path_to]/singlesignon
-    virtualenv .
+    python3 -m venv ve
 
 
 Then install the dependencies:
 
-    bin/pip install -r requirements.txt
+    ./ve/bin/pip install -r requirements.txt
 
 
 Set the default django settings file used by all following commands:
