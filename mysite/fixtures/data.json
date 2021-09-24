@@ -1,0 +1,115 @@
+[
+  {
+    "model": "polls.site",
+    "pk": 1,
+    "fields": {
+      "domain": "nestle"
+    }
+  },
+  {
+    "model": "polls.site",
+    "pk": 2,
+    "fields": {
+      "domain": "loreal"
+    }
+  },
+  {
+    "model": "polls.profileform",
+    "pk": 1,
+    "fields": {
+      "site_id": 1,
+      "form_fields": {
+        "fields": [
+          {
+            "label": "Job Title",
+            "id": "job_title",
+            "type": "text",
+            "required": true
+          },
+          {
+            "label": "Location",
+            "id": "location",
+            "type": "select",
+            "choices": [
+              ["london", "London"],
+              ["spain", "Spain"],
+              ["bulgaria", "Bulgaria"]
+            ],
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "model": "polls.profileform",
+    "pk": 2,
+    "fields": {
+      "site_id": 2,
+      "form_fields": {
+        "fields" :[
+          {
+            "label": "City",
+            "id": "city",
+            "type": "text",
+            "required": true
+          },
+          {
+            "label": "Function",
+            "type": "select",
+            "id": "function",
+            "choices": [
+              ["development", "Development"],
+              ["sales", "Sales"],
+              ["marketing", "Marketing"]
+            ],
+            "required": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "first_name": "John",
+      "last_name": "Lenon",
+      "username": "johnlenon",
+      "password": "pbkdf2_sha256$260000$A1e37fpR37RiC2ZbLM7NvV$/EziJrP+FUTSpBGvpoUgyn+QSRMEn8MpCWBzoHEg5lg="
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "first_name": "Martin",
+      "last_name": "Luther",
+      "username": "martinluther",
+      "password": "pbkdf2_sha256$260000$A1e37fpR37RiC2ZbLM7NvV$/EziJrP+FUTSpBGvpoUgyn+QSRMEn8MpCWBzoHEg5lg="
+    }
+  },
+  {
+    "model": "polls.profile",
+    "pk": 1,
+    "fields": {
+      "site": 1,
+      "user": 1,
+      "dynamic_fields": {
+        "job_title": "Manager"
+      }
+    }
+  },
+  {
+    "model": "polls.profile",
+    "pk": 2,
+    "fields": {
+      "site": 1,
+      "user": 2,
+      "dynamic_fields": {
+        "job_title": "Manager",
+        "location": "madrid"
+      }
+    }
+  }
+]
