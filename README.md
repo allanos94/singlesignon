@@ -32,5 +32,5 @@ The application users 6 models
 4. polls.ProfileForm - Each site can have their own profile form and this model stores the fields for the profile forms. This model has a reference to a _Site_.
 5. polls.Poll - stores the question for the poll.
 6. polls.Answer - stores answers to the poll and the user who provided the answer. This model has a reference to the _Poll_ and _User_ model.
-7. polls.Answert 
+
 
