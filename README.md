@@ -24,3 +24,13 @@ To start the webserver locally, execute the below command in your base directory
 To run tests locally, execute the below command in your base directory
 ./run-tests.sh
 
+## Models description
+The application users 6 models
+1. django.contrib.auth.models.User - stores user details and is an inbuilt Django model provided by the authentication system
+2. polls.Site - stores details about a tenant
+3. polls.Profile - stores additional details for a user. Users can have extra fields and these fields vary for every site based on the profile form. This model refers the _ProfilForm_ and _Site_ model
+4. polls.ProfileForm - Each site can have their own profile form and this model stores the fields for the profile forms. This model has a reference to a _Site_.
+5. polls.Poll - stores the question for the poll.
+6. polls.Answer - stores answers to the poll and the user who provided the answer. This model has a reference to the _Poll_ and _User_ model.
+7. polls.Answert 
+
