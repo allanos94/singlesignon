@@ -11,8 +11,8 @@ PASSWORD = "qwerty"
 class BaseTestCase(TestCase):
     def setUp(self):
         super().setUp()
-        site = models.Site.objects.create(domain="test")
-        profile_form = models.ProfileForm.objects.create(
+        self.site = models.Site.objects.create(domain="test")
+        models.ProfileForm.objects.create(
             form_fields={
                 "fields" :[
                     {
@@ -35,7 +35,7 @@ class BaseTestCase(TestCase):
                     }
                 ]
             },
-            site=site
+            site=self.site
         )
         user = User.objects.create_user(
             username=USERNAME,
@@ -44,7 +44,7 @@ class BaseTestCase(TestCase):
             password=PASSWORD,
         )
         self.profile = models.Profile.objects.create(
-            site=site,
+            site=self.site,
             user=user,
             dynamic_fields={
                 "city": "London",
@@ -129,3 +129,16 @@ class TestPerformance(BaseTestCase):
     def test_querycount(self):
         with self.assertNumQueries(13):
             self.client.get(reverse('index'))
+
+
+class TestPollsMiddleware(BaseTestCase):
+    def test_redirect(self):
+        user = models.User.objects.create_user(
+            username="random",
+            password="random",
+        )
+        models.Profile.objects.create(user=user, site=self.site, dynamic_fields=[])
+        login = self.client.login(username="random", password="random")
+        assert login, "Login Failed"
+        response = self.client.get(reverse("index"), follow=True)
+        self.assertRedirects(response, reverse("my_profile"))
