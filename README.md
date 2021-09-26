@@ -24,6 +24,10 @@ To start the webserver locally, execute the below command in your base directory
 To run tests locally, execute the below command in your base directory
 ./run-tests.sh
 
+Access the application at http://localhost:8000
+Login credentials have been shared with you via email
+
+
 ## Models description
 The application users 6 models
 1. django.contrib.auth.models.User - stores user details and is an inbuilt Django model provided by the authentication system
