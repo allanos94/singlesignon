@@ -1,7 +1,7 @@
-# Wazoku Integrations test
+# Demo Polls Application
 
 ## Description
-This repo is intended for testing Single Sign On with Google accounts and interactions with its API.
+This repo is intended for testing a simple polls application which captures answers to poll questions from users. Polls are linked to client and each client can have their own user profile form. The application uses Django's in-built Authentication system (https://docs.djangoproject.com/en/3.2/topics/auth/).
 
 ## Getting started
 
@@ -13,32 +13,14 @@ this repo `eshwaric/singlesignon` and push the code into your new one. You can f
 
 Before proceeded be aware that this exercise assumes you are using a linux machine with [pip](https://pip.pypa.io/en/stable) and [venv](https://docs.python.org/3/library/venv.html) installed.
 
-Create a new virtualenv in your checked out repo.
+To initialize the repository run the below script
+./initialize_repo.sh
 
-    cd /[path_to]/singlesignon
-    python3 -m venv ve
+This script will install Django 3.2 and other libraries required for the application. It also loads a fixture to prepopulate the database with some test data for the application
 
+To start the webserver locally, execute the below command in your base directory
+./run-server.sh
 
-Then install the dependencies:
-
-    ./ve/bin/pip install -r requirements.txt
-
-
-Set the default django settings file used by all following commands:
-
-    export DJANGO_SETTINGS_MODULE=integrationsite.settings
-
-
-The code in this repo uses an sqlite database as the persistence layer. You can initialize an sqlite database (this db will be stored in the file `./db.sqlite3`)
-
-    bin/python manage.py migrate
-
-The web application has an INSTALLED_APP called which handles single sign on using Google accounts. The app has a model called User which stores user info.
-
-
-## Exercise
-index.html is a very simple webpage which just has a Login with Google button. Implement single sign on with Google using the OAuth Protocol and create a user for the web application. The profile details of the user must be pulled from google and persisted in the app.
-
-Please create a pull request for this work. Bonus marks for adding tests for the integration
-
+To run tests locally, execute the below command in your base directory
+./run-tests.sh
 
