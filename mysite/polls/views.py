@@ -6,12 +6,32 @@ from polls.forms.user import ProfileForm
 
 @login_required
 def index(request):
-    return render(request, 'polls/index.html', {})
+    context = {
+        'polls': []
+    }
+    polls = models.Poll.objects.all()
+    for poll in polls:
+        item = {
+            "title": poll.title,
+            "answers": [{
+                "value": answer.value,
+                "user_first_name": answer.user.first_name,
+                "user_last_name": answer.user.last_name,
+            } for answer in poll.answers.all()]
+        }
+        context['polls'].append(item)
+
+    return render(request, 'polls/index.html', context)
 
 @login_required
 def my_profile(request):
     current_user_profile = request.user.profile
     user_form = models.ProfileForm.objects.get(site=current_user_profile.site)
     fields = user_form.form_fields['fields']
-    form = ProfileForm(fields=fields, initial=current_user_profile.dynamic_fields)
+    data = {
+        "first_name": request.user.first_name,
+        "last_name": request.user.last_name,
+    }
+    data.update(current_user_profile.dynamic_fields)
+    form = ProfileForm(fields=fields, initial=data)
     return render(request, 'polls/current_user.html', {'form': form})

@@ -18,3 +18,16 @@ class ProfileForm(models.Model):
     form_fields = models.JSONField()
     site=models.ForeignKey(Site, on_delete=models.CASCADE)
 
+# Store poll questions
+class Poll(models.Model):
+    title = models.CharField(max_length=100)
+
+# Stores poll answers
+class Answer(models.Model):
+    poll = models.ForeignKey(
+        Poll,
+        on_delete=models.CASCADE,
+        related_name="answers",
+    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    value = models.CharField(max_length=250)

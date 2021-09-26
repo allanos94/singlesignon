@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="jumbotron">
-    <h2>Question- What is your favourite color?</h2>
-</div>
 <table class="table">
 <thead>
     <tr>
@@ -13,24 +10,19 @@
     </tr>
 </thead>
 <tbody>
-    <tr>
-    <th scope="row">1</th>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>Red is my favourite color.</td>
-    </tr>
-    <tr>
-    <th scope="row">2</th>
-    <td>Jacob</td>
-    <td>Thornton</td>
-    <td>Blue is my favourite color.</td>
-    </tr>
-    <tr>
-    <th scope="row">3</th>
-    <td>Larry</td>
-    <td>Bird</td>
-    <td>Green is my favourite color.</td>
-    </tr>
+    {% for poll in polls %}
+        <tr>
+            <th colspan="4">{{ poll.title }}</th>
+        </tr>
+        {% for answer in poll.answers %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ answer.user_first_name }}</td>
+                <td>{{ answer.user_last_name }}</td>
+                <td>{{ answer.value }}</td>
+            </tr>
+        {% endfor %}
+    {% endfor %}
 </tbody>
 </table>
 {% endblock %}

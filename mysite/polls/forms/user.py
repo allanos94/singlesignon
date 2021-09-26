@@ -4,6 +4,8 @@ SELECT_FIELD = 'select'
 
 
 class ProfileForm(forms.Form):
+    first_name = forms.CharField()
+    last_name = forms.CharField()
     def __init__(self, *args, **kwargs):
         dynamic_fields = kwargs.pop('fields', [])
         super().__init__(*args, **kwargs)

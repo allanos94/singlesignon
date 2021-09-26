@@ -31,6 +31,7 @@
             "id": "location",
             "type": "select",
             "choices": [
+              ["", "Select a location"],
               ["london", "London"],
               ["spain", "Spain"],
               ["bulgaria", "Bulgaria"]
@@ -59,6 +60,7 @@
             "type": "select",
             "id": "function",
             "choices": [
+              ["", "Select a department"],
               ["development", "Development"],
               ["sales", "Sales"],
               ["marketing", "Marketing"]
@@ -110,6 +112,56 @@
         "job_title": "Manager",
         "location": "madrid"
       }
+    }
+  },
+  {
+    "model": "polls.poll",
+    "pk": 1,
+    "fields": {
+      "title": "What is your favourite color?"
+    }
+  },
+  {
+    "model": "polls.answer",
+    "pk": 1,
+    "fields": {
+      "poll": 1,
+      "user": 1,
+      "value": "Red is my favourite color"
+    }
+  },
+  {
+    "model": "polls.answer",
+    "pk": 2,
+    "fields": {
+      "poll": 1,
+      "user": 2,
+      "value": "Green is my favourite color"
+    }
+  },
+  {
+    "model": "polls.poll",
+    "pk": 2,
+    "fields": {
+      "title": "What is your favourite food?"
+    }
+  },
+  {
+    "model": "polls.answer",
+    "pk": 3,
+    "fields": {
+      "poll": 2,
+      "user": 1,
+      "value": "Green thai curry is my favourite food."
+    }
+  },
+  {
+    "model": "polls.answer",
+    "pk": 4,
+    "fields": {
+      "poll": 2,
+      "user": 2,
+      "value": "Pineapple pizza is my favourite food."
     }
   }
 ]

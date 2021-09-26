@@ -7,8 +7,6 @@ def is_profile_complete(user):
     form = models.ProfileForm.objects.get(site=site)
     form_fields = form.form_fields['fields']
     required_fields = [field['id'] for field in form_fields if field['required']]
-    print(user.profile.dynamic_fields)
-    print(required_fields)
     is_complete = all([field in user.profile.dynamic_fields for field in required_fields])
     return is_complete
 
@@ -32,9 +30,12 @@ class ProfileRedirectionMiddleware:
         current_user = request.user
         skip_urls = [
             '/polls/myprofile',
-            '/accounts/login/',
             '/accounts/logout/',
         ]
 
-        if request.path not in skip_urls and not is_profile_complete(request.user):
+        if (
+            current_user.is_authenticated
+            and request.path not in skip_urls
+            and not is_profile_complete(current_user)
+        ):
             return HttpResponseRedirect(reverse_lazy("my_profile"))
