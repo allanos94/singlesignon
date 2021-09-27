@@ -13,23 +13,20 @@ this repo `eshwaric/singlesignon` and push the code into your new one. You can f
 
 Before proceeding be aware that this exercise assumes you are using a linux machine with [pip](https://pip.pypa.io/en/stable) and [venv](https://docs.python.org/3/library/venv.html) installed.
 
-To initialize the repository run the below script
-./initialize_repo.sh
+To initialize the repository in your base directory execute ./initialize_repo.sh
 
 This script will install Django 3.2 and other libraries required for the application. It also loads a fixture to prepopulate the database with some test data for the application
 
-To start the webserver locally, execute the below command in your base directory
-./run-server.sh
+To start the webserver locally, in your base directory execute ./run-server.sh
 
-To run tests locally, execute the below command in your base directory
-./run-tests.sh
+To run tests locally, in your base directory execute ./run-tests.sh
 
 Access the application at http://localhost:8000
 Login credentials have been shared with you via email
 
 
 ## Models description
-The application users 6 models
+The application uses 6 models
 1. django.contrib.auth.models.User - stores user details and is an inbuilt Django model provided by the authentication system
 2. polls.Site - stores details about a tenant
 3. polls.Profile - stores additional details for a user. Users can have extra fields and these fields vary for every site based on the profile form. This model refers the _ProfilForm_ and _Site_ model
