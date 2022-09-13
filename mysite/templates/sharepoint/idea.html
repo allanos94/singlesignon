@@ -1,0 +1,19 @@
+{% extends 'sharepoint/base.html' %}
+{% block content %}
+<div class="mt-4 p-5 bg-primary text-white rounded">
+    <h1>Completed Ideas</h1>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+        </tr>
+    </thead>
+    <tbody>
+        {% for idea in ideas %}
+        <tr>
+            <td>{{ idea.name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
